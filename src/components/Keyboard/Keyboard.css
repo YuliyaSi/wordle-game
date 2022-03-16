@@ -1,0 +1,23 @@
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.line1, .line2, .line3 {
+    display: flex;
+    flex-direction: row;
+}
+.key {
+    background: #808080;
+    text-align: center;
+    line-height: 2rem;
+    border: 1px solid #61dafb;
+    margin: 2px;
+    width: 3rem;
+    height: 2rem;
+    cursor: pointer;
+}
+#bigger {
+    width: 4rem;
+}

@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import Board from "./components/Board/Board";
+import Keyboard from "./components/Keyboard/Keyboard";
+import {useState, createContext} from "react";
+import {boardDefault} from "./words";
+
+export const AppContext = createContext();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [board, setBoard] = useState(boardDefault);
+    const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0});
+
+    const onSelectLetter = (keyVal) => {
+        if (currAttempt.letterPos > 4) return;
+        const newBoard = [...board];
+        newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal;
+        setBoard(newBoard);
+        setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos + 1})
+    }
+
+    const onDeleteLetter = () => {
+        if (currAttempt.letterPos === 0) return;
+        const newBoard = [...board];
+        newBoard[currAttempt.attempt][currAttempt.letterPos - 1] = '';
+        setBoard(newBoard);
+        setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos - 1})
+    }
+
+    const onEnter = () => {
+        if (currAttempt.letterPos !== 5) return;
+        setCurrAttempt({attempt: currAttempt.attempt + 1, letterPos: 0})
+    }
+    return (
+        <div className="App">
+            <nav>
+                <h1>Wordle</h1>
+            </nav>
+            <AppContext.Provider value={{board, setBoard, currAttempt, setCurrAttempt, onSelectLetter, onDeleteLetter, onEnter}}>
+                <Board/>
+                <Keyboard/>
+            </AppContext.Provider>
+
+        </div>
+    );
 }
 
 export default App;
