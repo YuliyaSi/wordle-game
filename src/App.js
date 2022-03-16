@@ -63,9 +63,7 @@ function App() {
         if (currAttempt.attempt === 5) {
             setGameOver({gameover: true, guessedWord: false})
         }
-
     }
-
 
     return (
         <div className="App">
