@@ -1,30 +1,15 @@
-.keyboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.line1, .line2, .line3 {
-    display: flex;
-    flex-direction: row;
-}
-.key {
-    margin-bottom: 2px;
-    margin-right: 6px;
-    cursor: pointer;
-}
-.key span {
+button {
     position: relative;
     display: inline-block;
     padding: 1rem;
-    width: 2rem;
+    width: 8rem;
     height: 2rem;
     background: linear-gradient(180deg, #282828, #202020);
     border-radius: 10px;
     box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15), inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 10px 25px rgba(0, 0, 0, 0.4);
     overflow: hidden;
 }
-.key span::before {
+button::before {
     content: '';
     position: absolute;
     top: 3px;
@@ -38,7 +23,7 @@
     border-bottom: 1px solid #0004;
     border-top: 1px solid #0009;
 }
-.key i {
+button i {
     position: relative;
     display: inline-block;
     color: #ffffff;
@@ -46,13 +31,4 @@
     text-transform: uppercase;
     margin: 0 auto;
     font-size: medium;
-}
-
-
-#bigger {
-    width: 8rem;
-}
-span#disabled i {
-    background: transparent;
-    color: transparent;
 }

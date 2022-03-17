@@ -9,9 +9,8 @@ function GameOver() {
             <h3>{gameover.guessedWord ? 'You correctly guessed' : "You failed!"}</h3>
             <h1>Correct: {correctWord}</h1>
             {gameover.guessedWord && (<h3>You guessed in {currAttempt.attempt} attempts</h3>)}
-            <div>
-                <button onClick={() => document.location.reload()}>Restart</button>
-            </div>
+            <button id={'button'} onClick={() => document.location.reload()}><i>Restart</i></button>
+
         </div>
     );
 }
